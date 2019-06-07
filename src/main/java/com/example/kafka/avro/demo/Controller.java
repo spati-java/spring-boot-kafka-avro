@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,9 +16,8 @@ public class Controller {
 
     private final KafkaTemplate<String,Customer> kafkaTemplate;
 
-    @GetMapping("/msg")
-    public  void greet(@RequestBody Customer customer){
-/*
+    @GetMapping("/customers")
+    public  String greet(){
 
         Customer customer = Customer.newBuilder()
                 .setAge(23)
@@ -27,10 +27,10 @@ public class Controller {
                 .setFirstName("Sourav")
                 .setLastName("Pati")
                 .build();
-*/
 
 
         kafkaTemplate.send("avro-test-customer",customer);
-        log.info("customer sent");
+
+        return "Customer information sent to kafka";
     }
 }
