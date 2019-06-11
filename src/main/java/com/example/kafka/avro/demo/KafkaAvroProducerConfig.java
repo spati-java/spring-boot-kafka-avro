@@ -30,14 +30,13 @@ public class KafkaAvroProducerConfig {
         Map<String, Object> props = new HashMap<>(kafkaProperties.buildProducerProperties());
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
-        props.put("schema.registry.url", "https://kafka-3ce1f799-echo-enterprise-data-integration.aivencloud.com:25297");
+        props.put("schema.registry.url", "https://localhost:9092");
         props.put("security.protocol", "SSL");
-        props.put("basic.auth.user.info", "avnadmin:p7f9m0ty5373cxb6");
+        props.put("basic.auth.user.info", "username:password");
         props.put("basic.auth.credentials.source", "USER_INFO");
 
         return props;
     }
-
 
     @Bean
     public KafkaTemplate<String, Customer> kafkaTemplate() {

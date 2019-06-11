@@ -41,11 +41,11 @@ public class KafkaAvroConsumerConfig {
 
         Map<String, Object> props = new HashMap<>(kafkaProperties.buildConsumerProperties());
 
-        props.put(org.apache.kafka.clients.consumer.ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka-3ce1f799-echo-enterprise-data-integration.aivencloud.com:25294");
+        props.put(org.apache.kafka.clients.consumer.ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9091");
         props.put(org.apache.kafka.clients.consumer.ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class);
         props.put(org.apache.kafka.clients.consumer.ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
         props.put(org.apache.kafka.clients.consumer.ConsumerConfig.GROUP_ID_CONFIG,"test-group");
-        props.put(org.apache.kafka.clients.consumer.ConsumerConfig.CLIENT_ID_CONFIG,"well-completion-consumer");
+        props.put(org.apache.kafka.clients.consumer.ConsumerConfig.CLIENT_ID_CONFIG,"client-1");
         props.put(org.apache.kafka.clients.consumer.ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         props.put(org.apache.kafka.clients.consumer.ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 5000);
         props.put("security.protocol","SSL");
